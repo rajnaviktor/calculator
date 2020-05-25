@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Számológép</title>
+
+    <link rel="stylesheet" href="css/calculator-style.css">
+</head>
+<body>
+<form id="calc-form" name="calc">
+    <table>
+        <tr>
+            <td colspan="3">
+                <input type="text" name="display" id="screen" disabled>
+            </td>
+            <td><input type="button" class="clear" value="C" onclick="calc.screen.value = ''"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="one" value="1" onclick="calc.screen.value += '1'"></td>
+            <td><input type="button" class="two" value="2" onclick="calc.screen.value += '2'"></td>
+            <td><input type="button" class="three" value="3" onclick="calc.screen.value += '3'"></td>
+            <td><input type="button" class="operator multiple" value="*" onclick="calc.screen.value += '*'"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="four" value="4" onclick="calc.screen.value += '4'"></td>
+            <td><input type="button" class="five" value="5" onclick="calc.screen.value += '5'"></td>
+            <td><input type="button" class="six" value="6" onclick="calc.screen.value += '6'"></td>
+            <td><input type="button" class="operator divide" value="/" onclick="calc.screen.value += '/'"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="seven" value="7" onclick="calc.screen.value += '7'"></td>
+            <td><input type="button" class="eight" value="8" onclick="calc.screen.value += '8'"></td>
+            <td><input type="button" class="nine" value="9" onclick="calc.screen.value += '9'"></td>
+            <td><input type="button" class="operator plus" value="+" onclick="calc.screen.value += '+'"></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="comma" value="." onclick="calc.screen.value += '.'"></td>
+            <td><input type="button" class="zero" value="0" onclick="calc.screen.value += '0'"></td>
+            <td><input type="button" class="calculate" value="=" onclick="calculate()"></td>
+            <td><input type="button" class="operator minus" value="-" onclick="calc.screen.value += '-'"></td>
+        </tr>
+    </table>
+</form>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    function calculate() {
+        try {
+            $("#screen").val(eval($("#screen").val()));
+        } catch (e) {
+            if (e instanceof SyntaxError) {
+                alert("Hibás adatbevitel: "+e.message);
+            }
+        }
+    }
+    $(document).keypress(
+        function(event){
+            if (event.which == '13') {
+                event.preventDefault();
+            }
+        });
+    $(document).bind('keypress', function(e) {
+        var code = e.keyCode || e.which;
+        switch (code) {
+            case 48:
+                $('.zero').click();
+                break;
+            case 49:
+                $('.one').click();
+                break;
+            case 50:
+                $('.two').click();
+                break;
+            case 51:
+                $('.three').click();
+                break;
+            case 52:
+                $('.four').click();
+                break;
+            case 53:
+                $('.five').click();
+                break;
+            case 54:
+                $('.six').click();
+                break;
+            case 55:
+                $('.seven').click();
+                break;
+            case 56:
+                $('.eight').click();
+                break;
+            case 57:
+                $('.nine').click();
+                break;
+            case 42:
+                $('.multiple').click();
+                break;
+            case 47:
+                $('.divide').click();
+                break;
+            case 43:
+                $('.plus').click();
+                break;
+            case 45:
+                $('.minus').click();
+                break;
+            case 13:
+                $('.calculate').click();
+                break;
+            case 44:
+                $('.comma').click();
+                break;
+        }
+    });
+    $(document).bind('keyup', function(e) {
+        var code = e.keyCode || e.which;
+        switch (code) {
+            case 46:
+                $('.clear').click();
+                break;
+            case 8:
+                $("#screen").val($("#screen").val().substring(0,$("#screen").val().length-1));
+                break;
+        }
+    });
+</script>
+</body>
+</html>

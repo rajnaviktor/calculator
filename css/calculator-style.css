@@ -1,0 +1,43 @@
+table {
+    background-color: #222;
+    width: 295px;
+    height: 325px;
+    text-align: center;
+    padding-right: 10px;
+    margin:auto;
+}
+
+input {
+    outline: 0;
+    position: relative;
+    left: 5px;
+    top: 5px;
+    border: 0;
+    color: #495069;
+    background-color: #fff;
+    width: 60px;
+    height: 50px;
+    float: left;
+    margin: 5px;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+
+#screen {
+    width: 240px;
+    font-size: 26px;
+    float: left;
+}
+
+.operator {
+    position: relative;
+}
+
+#clear {
+    float: left;
+    position: relative;
+    display: block;
+}
+
+
